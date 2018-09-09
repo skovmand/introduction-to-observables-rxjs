@@ -1,3 +1,4 @@
-// 4.js:  A simple start
-//        1. An observable that emits Hello World
-//        2. Extract the observer
+// 4.js:  Understanding the Observable pattern
+//        1: Make a custom observable
+//        2: Add unsubscribe functionality
+//        3: Use our own observable implementation

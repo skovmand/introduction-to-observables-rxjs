@@ -1,3 +1,4 @@
-// 6.js:  Custom Observable factories (a producer which wraps a data source)
-//        1: interval
-//        2: fromPromise
+// 6.js:  Using operators (transforming the data)
+//        1: Using map
+//        2: Using filter
+

@@ -1,4 +1,4 @@
-// 7.js:  Using operators (transforming the data)
-//        1: Using map
-//        2: Using filter
+// 7.js:  Using fromEvent in the browser
+//        1: Open 8.html in a browser
+//        2: Create a stream of button click events, mapped to a string.
 

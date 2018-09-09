@@ -1,4 +1,3 @@
-// 5.js:  Understanding the Observable pattern
-//        1: Make a custom observable
-//        2: Add unsubscribe functionality
-//        3: Use our own observable implementation
+// 5.js:  Custom Observable factories (a producer which wraps a data source)
+//        1: interval
+//        2: fromPromise
