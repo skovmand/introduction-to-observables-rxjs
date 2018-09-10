@@ -3,12 +3,26 @@
 //        2: Create a stream of button click events, mapped to a string.
 
 const { fromEvent } = rxjs;
-const { map } = rxjs.operators;
+const { map, delay } = rxjs.operators;
 
-const button = document.querySelector("#clickButton");
+const buttonNode = document.querySelector("#clickButton");
 
-const click$ = fromEvent(button, 'click').pipe(
-  map(_ => "Clicked!")
+const click$ = fromEvent(buttonNode, "click").pipe(
+  delay(1000)
 );
 
-click$.subscribe(value => console.log(value));
+click$.subscribe(_ => {
+  document.body.style.backgroundColor = "#" + parseInt(Math.random() * 0xffffff).toString(16);
+});
+
+
+
+const inputNode = document.querySelector("#textInput");
+const outputNode = document.querySelector("#output");
+
+const typeStream$ = fromEvent(inputNode, "keyup").pipe(
+  map(event => event.target.value),
+  delay(2000),
+);
+
+typeStream$.subscribe(text => (outputNode.textContent = text))

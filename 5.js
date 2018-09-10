@@ -1,15 +1,17 @@
 // 5.js:  A complete custom implementation.
 
-const { Observable } = require("rxjs");
+function Observable(creationFn) {
+  this.subscribe = creationFn;
+}
 
-function subscribeFn(observer) {
+function intervalCreationFn(observer) {
   let i = 0;
   const interval = setInterval(() => observer.next(i++), 500);
 
   return () => clearInterval(interval);
 }
 
-const interval$ = new Observable(subscribeFn);
+const interval$ = new Observable(intervalCreationFn);
 
 const observer = {
   next: value => console.log(value),
@@ -17,6 +19,6 @@ const observer = {
   complete: () => console.log("Complete")
 };
 
-const subscription = interval$.subscribe(observer);
+const unsubscribe = interval$.subscribe(observer);
 
-setTimeout(() => subscription.unsubscribe(), 5000);
+setTimeout(() => unsubscribe(), 5000);
