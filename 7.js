@@ -2,8 +2,8 @@
 //        1: Using map
 //        2: Using filter
 
-const { interval } = rxjs;
-const { map, filter } = rxjs.operators;
+const { interval } = require("rxjs");
+const { map, filter } = require("rxjs/operators");
 
 const observer = {
   next: value => console.log(value),

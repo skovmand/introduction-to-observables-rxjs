@@ -2,14 +2,14 @@
 
 const { Observable } = require("rxjs");
 
-function subscribeFn(observer) {
+function intervalCreationFn(observer) {
   let i = 0;
   const interval = setInterval(() => observer.next(i++), 500);
 
   return () => clearInterval(interval);
 }
 
-const interval$ = new Observable(subscribeFn);
+const interval$ = new Observable(intervalCreationFn);
 
 const observer = {
   next: value => console.log(value),
