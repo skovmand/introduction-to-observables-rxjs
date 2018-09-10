@@ -9,6 +9,7 @@
   "author": "Niels Kristian Hansen Skovmand",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.18.0",
     "rxjs": "^6.3.2"
   }
 }

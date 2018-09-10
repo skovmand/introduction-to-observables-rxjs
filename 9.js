@@ -1,9 +1,28 @@
-// 9.js:  An advanced network stream,
-//         Getting the top story from Hacker News
+// 9.js:  Let's create a typewriter effect with RxJS in the browser
 
-// Top story api:
-// https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty
+const { from, interval, zip } = rxjs;
+const { scan } = rxjs.operators;
 
-// Story api:
-// https://hacker-news.firebaseio.com/v0/item/8863.json?print=pretty
+const headingNode = document.querySelector("#heading");
+const paragraphNode = document.querySelector("#paragraph");
 
+const heading = "Aarhus Festuge siger tak for i år";
+const paragraph =
+  "Aarhus Festuge 2018 har i de sidste 10 dage været fyldt med tusindvis af arrangementer rundt om i Aarhus. Musik, kunst og masser af mennesker har fyldt byens gader, og sensommervejret har heldigvis mestendels været oplagt til fest og fornøjelser.";
+
+function charFromString(string) {
+  const stringAsArray = string.split("");
+  return from(stringAsArray);
+}
+
+const heading$ = charFromString(heading);
+const paragraph$ = charFromString(paragraph);
+const timer$ = interval(25);
+
+zip(heading$, timer$, (char, index) => char)
+  .pipe(scan((acc, cur) => acc + cur, ""))
+  .subscribe(char => (headingNode.textContent = char));
+
+zip(paragraph$, timer$, (char, index) => char)
+  .pipe(scan((acc, cur) => acc + cur, ""))
+  .subscribe(char => (paragraphNode.textContent = char));

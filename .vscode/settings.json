@@ -13,4 +13,5 @@
   "editor.renderWhitespace": "none",
   "editor.renderIndentGuides": false,
   "editor.formatOnSave": false,
+  "prettier.printWidth": 60,
 }
