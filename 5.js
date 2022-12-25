@@ -1,6 +1,8 @@
 // 5.js:  A complete custom implementation.
 
-const { Observable } = require("rxjs");
+function Observable(creationFn) {
+  this.subscribe = creationFn;
+}
 
 function intervalCreationFn(observer) {
   let i = 0;
@@ -12,11 +14,11 @@ function intervalCreationFn(observer) {
 const interval$ = new Observable(intervalCreationFn);
 
 const observer = {
-  next: value => console.log(value),
-  error: error => console.error(error),
-  complete: () => console.log("Complete")
+  next: (value) => console.log(value),
+  error: (error) => console.error(error),
+  complete: () => console.log("Complete"),
 };
 
-const subscription = interval$.subscribe(observer);
+const unsubscribe = interval$.subscribe(observer);
 
-setTimeout(() => subscription.unsubscribe(), 5000);
+setTimeout(() => unsubscribe(), 5000);
